@@ -10,6 +10,8 @@ cp assets/*.js .publish-tmp/assets/
 [ -f CNAME ] && cp CNAME .publish-tmp/
 cd .publish-tmp
 git init -q -b gh-pages
+ git config user.name "ybaba-coder"
+ git config user.email "y.baba@hublinx.jp"
 git add -A
 git commit -q -m "publish $(date '+%Y-%m-%d %H:%M')"
 git push -f "https://github.com/ybaba-coder/asunaro-isahaya.git" gh-pages
