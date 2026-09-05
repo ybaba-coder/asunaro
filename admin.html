@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>管理画面 | デイサービスあすなろ諫早</title>
+<meta name="robots" content="noindex,nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#5e8c5a;--green-dark:#43683f;--brown:#4a4038;
+  --beige:#f6f2ea;--beige-dark:#e5ddcf;--danger:#c0564f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Sans JP",sans-serif;background:var(--beige);color:var(--brown);line-height:1.7}
+
+/* header */
+.topbar{position:sticky;top:0;z-index:50;background:var(--green-dark);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:12px 22px;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.topbar h1{font-size:16px;font-weight:700;letter-spacing:.06em}
+.topbar .actions{display:flex;gap:10px;align-items:center}
+.btn{border:none;border-radius:8px;padding:9px 20px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:.2s}
+.btn-save{background:#f0a53c;color:#fff}
+.btn-save:hover{background:#d98e32}
+.btn-ghost{background:rgba(255,255,255,.15);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.3)}
+.btn-small{padding:5px 12px;font-size:12px;background:var(--beige-dark);color:var(--brown)}
+.btn-small:hover{background:#d8cfc0}
+.btn-danger{background:#f3ddda;color:var(--danger)}
+.btn-danger:hover{background:#e9c8c4}
+
+.wrap{max-width:860px;margin:0 auto;padding:26px 18px 120px}
+.note{background:#fff8e8;border:1px solid #eeddb0;border-radius:10px;padding:14px 18px;font-size:13px;margin-bottom:22px}
+
+/* cards */
+.card{background:#fff;border-radius:14px;box-shadow:0 4px 16px rgba(80,60,30,.08);margin-bottom:22px;overflow:hidden}
+.card summary{cursor:pointer;list-style:none;padding:18px 24px;font-size:16px;font-weight:700;display:flex;align-items:center;gap:10px;user-select:none}
+.card summary::-webkit-details-marker{display:none}
+.card summary::before{content:"▸";color:var(--green);transition:.2s}
+.card details[open] summary::before{transform:rotate(90deg)}
+.card summary::before{display:inline-block}
+.card .card-body{padding:4px 24px 26px;border-top:1px solid var(--beige)}
+
+label{display:block;font-size:13px;font-weight:700;margin:16px 0 5px;color:#6d6359}
+input[type=text],input[type=date],textarea{width:100%;border:1.5px solid var(--beige-dark);border-radius:8px;padding:9px 12px;font-size:14px;font-family:inherit;background:#fffdf9}
+input:focus,textarea:focus{outline:none;border-color:var(--green)}
+textarea{min-height:100px;resize:vertical;line-height:1.7}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+.hint{font-size:11.5px;color:#9a8f83;margin-top:3px}
+
+/* photo field */
+.photo-field{display:flex;gap:16px;align-items:flex-start;margin-top:6px;flex-wrap:wrap}
+.photo-preview{width:180px;height:120px;border-radius:10px;object-fit:cover;background:linear-gradient(140deg,#cfe3c8,#eef3e2);border:1.5px solid var(--beige-dark);display:flex;align-items:center;justify-content:center;color:#9a8f83;font-size:12px}
+.photo-btns{display:flex;flex-direction:column;gap:8px}
+.photo-btns input[type=file]{display:none}
+
+/* news item */
+.news-item{border:1.5px solid var(--beige-dark);border-radius:10px;padding:14px 16px;margin-top:14px;background:#fffdf9}
+.news-item .news-head{display:flex;gap:10px;align-items:center}
+.news-item .news-head input[type=date]{width:160px}
+.news-item .news-head input[type=text]{flex:1}
+
+/* schedule item */
+.sch-item{display:flex;gap:10px;margin-top:10px;align-items:center}
+.sch-item input.time{width:90px}
+.sch-item input.stitle{width:200px}
+.sch-item input.sdesc{flex:1}
+
+/* toast */
+.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--green-dark);color:#fff;padding:13px 34px;border-radius:999px;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:.35s;opacity:0;z-index:99}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+@media(max-width:640px){
+  .row2{grid-template-columns:1fr}
+  .topbar h1{font-size:13px}
+  .sch-item{flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <h1>🌲 あすなろ諫早　ホームページ管理画面</h1>
+  <div class="actions">
+    <button class="btn btn-ghost" onclick="window.open('index.html','_blank')">サイトを見る</button>
+    <button class="btn btn-save" onclick="saveAll()">保存する</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="note">
+    ✏️ 各項目を編集して、右上の<b>「保存する」</b>を押すとホームページに反映されます。<br>
+    📷 写真は「写真を変更」からパソコン内の画像を選ぶだけで入れ替えられます（自動で縮小されます）。
+  </div>
+
+  <!-- 基本情報 -->
+  <div class="card"><details open>
+    <summary>🏠 基本情報（名称・連絡先）</summary>
+    <div class="card-body">
+      <div class="row2">
+        <div><label>施設名</label><input type="text" id="f_site_name"></div>
+        <div><label>運営法人</label><input type="text" id="f_site_company"></div>
+      </div>
+      <div class="row2">
+        <div><label>電話番号</label><input type="text" id="f_site_tel"></div>
+        <div><label>FAX番号</label><input type="text" id="f_site_fax"></div>
+      </div>
+      <div class="row2">
+        <div><label>郵便番号</label><input type="text" id="f_site_zip"></div>
+        <div><label>メールアドレス</label><input type="text" id="f_site_email"></div>
+      </div>
+      <label>住所</label><input type="text" id="f_site_address">
+      <div class="row2">
+        <div><label>営業時間</label><input type="text" id="f_site_hours"></div>
+        <div><label>定員</label><input type="text" id="f_site_capacity"></div>
+      </div>
+      <div class="row2">
+        <div><label>利用対象</label><input type="text" id="f_site_target"></div>
+        <div><label>食事代</label><input type="text" id="f_site_meal"></div>
+      </div>
+      <label>送迎</label><input type="text" id="f_site_sougei">
+      <div class="row2">
+        <div>
+          <label>Instagram URL（トップ画像の右上にアイコン表示）</label>
+          <input type="text" id="f_sns_instagram" placeholder="https://www.instagram.com/○○○">
+          <div class="hint">空欄にするとアイコンに「準備中」と表示されます</div>
+        </div>
+        <div>
+          <label>Facebook URL（トップ画像の右上にアイコン表示）</label>
+          <input type="text" id="f_sns_facebook" placeholder="https://www.facebook.com/○○○">
+          <div class="hint">空欄にするとアイコンに「準備中」と表示されます</div>
+        </div>
+      </div>
+    </div>
+  </details></div>
+
+  <!-- メイン画像 -->
+  <div class="card"><details open>
+    <summary>🖼 メイン画像（トップの大きな写真）</summary>
+    <div class="card-body">
+      <div class="row2">
+        <div><label>大見出し</label><input type="text" id="f_hero_title"></div>
+        <div><label>キャッチコピー</label><input type="text" id="f_hero_sub"></div>
+      </div>
+      <label>写真</label>
+      <div class="photo-field" data-photo="hero.photo"></div>
+    </div>
+  </details></div>
+
+  <!-- 紹介文 -->
+  <div class="card"><details>
+    <summary>📖 紹介文（トップの案内文）</summary>
+    <div class="card-body">
+      <label>見出し（改行できます）</label><textarea id="f_intro_heading" style="min-height:70px"></textarea>
+      <label>本文</label><textarea id="f_intro_body"></textarea>
+      <label>写真</label>
+      <div class="photo-field" data-photo="intro.photo"></div>
+    </div>
+  </details></div>
+
+  <!-- サービス -->
+  <div class="card"><details>
+    <summary>💚 サービス（リハビリ・アロマ・余暇）</summary>
+    <div class="card-body" id="servicesBody"></div>
+  </details></div>
+
+  <!-- 入浴・送迎 -->
+  <div class="card"><details>
+    <summary>🛁 入浴・送迎</summary>
+    <div class="card-body">
+      <label>【入浴】本文</label><textarea id="f_bath_body"></textarea>
+      <label>【入浴】写真</label>
+      <div class="photo-field" data-photo="bath.photo"></div>
+      <label style="margin-top:26px">【送迎】本文</label><textarea id="f_transport_body"></textarea>
+      <label>【送迎】写真</label>
+      <div class="photo-field" data-photo="transport.photo"></div>
+    </div>
+  </details></div>
+
+  <!-- 一日の流れ -->
+  <div class="card"><details>
+    <summary>🕘 一日の流れ</summary>
+    <div class="card-body">
+      <div id="scheduleBody"></div>
+      <button class="btn btn-small" style="margin-top:14px" onclick="addSchedule()">＋ 行を追加</button>
+    </div>
+  </details></div>
+
+  <!-- 基本理念・代表挨拶 -->
+  <div class="card"><details>
+    <summary>🍀 基本理念・代表挨拶</summary>
+    <div class="card-body">
+      <label>基本理念（前文）</label><textarea id="f_ph_lead" style="min-height:60px"></textarea>
+      <label>理念（1行に1つ）</label><textarea id="f_ph_items"></textarea>
+      <label style="margin-top:22px">代表挨拶（本文）</label><textarea id="f_greet_body" style="min-height:160px"></textarea>
+      <div class="row2">
+        <div><label>署名1行目</label><input type="text" id="f_greet_sign1"></div>
+        <div><label>署名2行目</label><input type="text" id="f_greet_sign2"></div>
+      </div>
+      <label>代表の写真（任意）</label>
+      <div class="photo-field" data-photo="greeting.photo"></div>
+    </div>
+  </details></div>
+
+  <!-- 関連企業 -->
+  <div class="card"><details>
+    <summary>🏢 関連企業（事業所案内と代表挨拶の間に表示）</summary>
+    <div class="card-body">
+      <div id="partnersBody"></div>
+      <button class="btn btn-small" style="margin-top:14px" onclick="addPartner()">＋ 関連企業を追加</button>
+    </div>
+  </details></div>
+
+  <!-- お知らせ -->
+  <div class="card"><details open>
+    <summary>📢 お知らせ</summary>
+    <div class="card-body">
+      <div id="newsBody"></div>
+      <button class="btn btn-small" style="margin-top:14px" onclick="addNews()">＋ お知らせを追加</button>
+    </div>
+  </details></div>
+
+  <!-- 書類・情報公開 -->
+  <div class="card"><details>
+    <summary>📑 書類・情報公開（運営規程・重要事項説明書など）</summary>
+    <div class="card-body">
+      <p style="font-size:13px;margin-top:14px">ホームページに掲載が必要な書類（PDF・Word・Excel・画像）をアップロードできます。サイトの「お知らせ」と「アクセス」の間に<b>「情報公開」</b>として表示されます（書類が無い間は非表示）。</p>
+      <p class="hint">⚠ 保存容量に限りがあるため、1ファイル3MBまで。PDFはサイズを小さくしてからアップロードしてください。</p>
+      <div id="docsBody"></div>
+      <button class="btn btn-small" style="margin-top:14px" onclick="addDocument()">＋ 書類を追加</button>
+    </div>
+  </details></div>
+
+  <!-- エラーログ -->
+  <div class="card"><details>
+    <summary>🧾 エラーログ履歴 <span id="errCount" style="font-size:12px;color:#9a8f83;font-weight:400"></span></summary>
+    <div class="card-body">
+      <p style="font-size:13px;margin-top:14px">ホームページや管理画面で発生したエラー（写真の読み込み失敗など）の記録です。表示がおかしい時の原因調査に使えます。</p>
+      <div style="display:flex;gap:10px;margin:14px 0">
+        <button class="btn btn-small" onclick="renderErrlog()">🔄 最新に更新</button>
+        <button class="btn btn-danger" onclick="if(confirm('エラーログをすべて消去しますか？')){clearErrorLog();renderErrlog();}">🗑 ログを消去</button>
+      </div>
+      <div id="errlogBody"></div>
+    </div>
+  </details></div>
+
+  <!-- データ管理 -->
+  <div class="card"><details>
+    <summary>⚙️ データ管理（バックアップ・初期化）</summary>
+    <div class="card-body">
+      <p style="font-size:13px;margin-top:14px">編集内容はこのブラウザに保存されています。バックアップを取っておくと、別のパソコンへの引っ越しや復元ができます。</p>
+      <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
+        <button class="btn btn-small" onclick="exportData()">📥 バックアップを保存</button>
+        <button class="btn btn-small" onclick="document.getElementById('importFile').click()">📤 バックアップから復元</button>
+        <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(this)">
+        <button class="btn btn-danger" onclick="resetAll()">🗑 すべて初期状態に戻す</button>
+      </div>
+    </div>
+  </details></div>
+</div>
+
+<div class="toast" id="toast">✅ 保存しました</div>
+
+<script src="assets/live-data.js?v=1"></script>
+<script src="assets/site-data.js?v=8"></script>
+<script>
+let data = loadSiteData();
+
+/* ============ フォーム ⇔ データの対応表 ============ */
+const FIELDS = {
+  f_site_name:"site.name", f_site_company:"site.company",
+  f_site_tel:"site.tel", f_site_fax:"site.fax",
+  f_site_zip:"site.zip", f_site_email:"site.email",
+  f_site_address:"site.address", f_site_hours:"site.hours",
+  f_site_capacity:"site.capacity", f_site_target:"site.target",
+  f_site_meal:"site.meal", f_site_sougei:"site.sougei",
+  f_sns_instagram:"sns.instagram", f_sns_facebook:"sns.facebook",
+  f_hero_title:"hero.title", f_hero_sub:"hero.sub",
+  f_intro_heading:"intro.heading", f_intro_body:"intro.body",
+  f_bath_body:"bath.body", f_transport_body:"transport.body",
+  f_ph_lead:"philosophy.lead",
+  f_greet_body:"greeting.body", f_greet_sign1:"greeting.sign1", f_greet_sign2:"greeting.sign2"
+};
+function getPath(o,p){ return p.split(".").reduce((a,k)=>a?.[k], o); }
+function setPath(o,p,v){
+  const ks=p.split("."); const last=ks.pop();
+  const t=ks.reduce((a,k)=>a[k]??={}, o); t[last]=v;
+}
+
+/* ============ 写真フィールド ============ */
+function renderPhotoFields(){
+  document.querySelectorAll(".photo-field").forEach(box=>{
+    const path = box.dataset.photo;
+    const src = getPath(data, path) || "";
+    box.innerHTML = `
+      ${src ? `<img class="photo-preview" src="${src}" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'photo-preview',textContent:'画像を読み込めません'}))">`
+            : `<div class="photo-preview">写真なし</div>`}
+      <div class="photo-btns">
+        <button class="btn btn-small" onclick="pickPhoto('${path}')">📷 写真を変更</button>
+        <button class="btn btn-danger" onclick="clearPhoto('${path}')">写真を外す</button>
+      </div>`;
+  });
+}
+function pickPhoto(path){
+  const input = document.createElement("input");
+  input.type = "file"; input.accept = "image/*";
+  input.onchange = () => {
+    const file = input.files[0]; if(!file) return;
+    compressImage(file, path === "hero.photo" ? 1800 : 1200, dataUrl=>{
+      setPath(data, path, dataUrl);
+      renderPhotoFields();
+      toast("写真を変更しました（保存を忘れずに）");
+    });
+  };
+  input.click();
+}
+function clearPhoto(path){
+  setPath(data, path, "");
+  renderPhotoFields();
+}
+/* 画像をcanvasで縮小してJPEG化（localStorage節約） */
+function compressImage(file, maxW, cb){
+  const img = new Image();
+  img.onload = () => {
+    const scale = Math.min(1, maxW / img.width);
+    const c = document.createElement("canvas");
+    c.width = Math.round(img.width * scale);
+    c.height = Math.round(img.height * scale);
+    c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+    cb(c.toDataURL("image/jpeg", 0.82));
+    URL.revokeObjectURL(img.src);
+  };
+  img.src = URL.createObjectURL(file);
+}
+
+/* ============ サービス ============ */
+function renderServices(){
+  document.getElementById("servicesBody").innerHTML = data.services.map((s,i)=>`
+    <div style="margin-top:${i?30:14}px;padding-top:${i?22:0}px;border-top:${i?"1px dashed var(--beige-dark)":"none"}">
+      <label>【${s.title}】タイトル</label>
+      <input type="text" value="${s.title.replace(/"/g,'&quot;')}" onchange="data.services[${i}].title=this.value">
+      <label>本文</label>
+      <textarea onchange="data.services[${i}].body=this.value">${s.body}</textarea>
+      ${s.list ? `<label>イベント一覧（1行に1つ）</label>
+      <textarea style="min-height:80px" onchange="data.services[${i}].list=this.value.split('\\n').map(v=>v.trim()).filter(Boolean)">${s.list.join("\n")}</textarea>` : ""}
+      <label>写真</label>
+      <div class="photo-field" data-photo="services.${i}.photo"></div>
+    </div>`).join("");
+}
+
+/* ============ 一日の流れ ============ */
+function renderSchedule(){
+  document.getElementById("scheduleBody").innerHTML = data.schedule.map((t,i)=>`
+    <div class="sch-item">
+      <input class="time" type="text" value="${t.time}" placeholder="9:30" onchange="data.schedule[${i}].time=this.value">
+      <input class="stitle" type="text" value="${t.title}" placeholder="タイトル" onchange="data.schedule[${i}].title=this.value">
+      <input class="sdesc" type="text" value="${t.desc||""}" placeholder="説明" onchange="data.schedule[${i}].desc=this.value">
+      <button class="btn btn-danger" onclick="data.schedule.splice(${i},1);renderSchedule()">削除</button>
+    </div>`).join("");
+}
+function addSchedule(){
+  data.schedule.push({time:"", title:"", desc:""});
+  renderSchedule();
+}
+
+/* ============ 関連企業 ============ */
+function renderPartners(){
+  data.partners ??= [];
+  document.getElementById("partnersBody").innerHTML = data.partners.map((p,i)=>`
+    <div class="news-item">
+      <div class="news-head">
+        <input type="text" value="${(p.name||"").replace(/"/g,'&quot;')}" placeholder="企業・施設名" onchange="data.partners[${i}].name=this.value">
+        <button class="btn btn-danger" onclick="data.partners.splice(${i},1);renderPartners();renderPhotoFields()">削除</button>
+      </div>
+      <label>区分バッジ（任意・例：フランチャイズグループ）</label>
+      <input type="text" value="${(p.tag||"").replace(/"/g,'&quot;')}" placeholder="空欄なら非表示" onchange="data.partners[${i}].tag=this.value">
+      <label>紹介文・事業所一覧（1行に1つ）</label>
+      <textarea style="min-height:64px;margin-top:4px" placeholder="紹介文（任意）" onchange="data.partners[${i}].desc=this.value">${p.desc||""}</textarea>
+      <label>リンクURL（任意・「詳しくはこちら」ボタンになります。https://… を貼り付け）</label>
+      <input type="text" value="${(p.url||"").replace(/"/g,'&quot;')}" placeholder="https://…" onchange="data.partners[${i}].url=this.value">
+      <label>ロゴ画像</label>
+      <div class="photo-field" data-photo="partners.${i}.logo"></div>
+    </div>`).join("");
+}
+function addPartner(){
+  data.partners.push({name:"", tag:"", desc:"", url:"", logo:""});
+  renderPartners();
+  renderPhotoFields();
+}
+
+/* ============ お知らせ ============ */
+function renderNews(){
+  document.getElementById("newsBody").innerHTML = data.news.map((n,i)=>`
+    <div class="news-item">
+      <div class="news-head">
+        <input type="date" value="${n.date||""}" onchange="data.news[${i}].date=this.value">
+        <input type="text" value="${(n.title||"").replace(/"/g,'&quot;')}" placeholder="タイトル" onchange="data.news[${i}].title=this.value">
+        <button class="btn btn-danger" onclick="data.news.splice(${i},1);renderNews();renderPhotoFields()">削除</button>
+      </div>
+      <textarea style="min-height:64px;margin-top:10px" placeholder="本文（任意）" onchange="data.news[${i}].body=this.value">${n.body||""}</textarea>
+      <label>リンクURL（任意・「詳しくはこちら」ボタンになります。本文中に貼ったURLも自動でリンクになります）</label>
+      <input type="text" value="${(n.url||"").replace(/"/g,'&quot;')}" placeholder="https://…" onchange="data.news[${i}].url=this.value">
+      <label>写真（任意・タイトルを開くと本文の下に表示されます）</label>
+      <div class="photo-field" data-photo="news.${i}.photo"></div>
+    </div>`).join("");
+}
+function addNews(){
+  const today = new Date();
+  const d = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,"0")}-${String(today.getDate()).padStart(2,"0")}`;
+  data.news.unshift({date:d, title:"", body:"", url:"", photo:""});
+  renderNews();
+  renderPhotoFields();
+}
+
+/* ============ 読み込み・保存 ============ */
+function loadForm(){
+  for(const [id, path] of Object.entries(FIELDS)){
+    const el = document.getElementById(id);
+    if(el) el.value = getPath(data, path) ?? "";
+  }
+  document.getElementById("f_ph_items").value = data.philosophy.items.join("\n");
+  renderServices();
+  renderSchedule();
+  renderPartners();
+  renderNews();
+  renderDocs();
+  renderPhotoFields(); // サービス・関連企業内の写真欄も含めて最後にまとめて描画
+  renderErrlog();
+}
+function collectForm(){
+  for(const [id, path] of Object.entries(FIELDS)){
+    const el = document.getElementById(id);
+    if(el) setPath(data, path, el.value);
+  }
+  data.philosophy.items = document.getElementById("f_ph_items").value
+    .split("\n").map(v=>v.trim()).filter(Boolean);
+}
+function saveAll(){
+  collectForm();
+  try{
+    saveSiteData(data);
+    toast("✅ 保存しました。ホームページに反映されています");
+  }catch(e){
+    logSiteError({type:"保存エラー", message:"データの保存に失敗しました（容量不足の可能性）", source:String(e)});
+    alert("保存に失敗しました。写真の枚数が多い場合は、使っていない写真を外してからもう一度お試しください。");
+  }
+}
+
+/* ============ バックアップ ============ */
+function exportData(){
+  collectForm();
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type:"application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "asunaro-backup.json";
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+function importData(input){
+  const file = input.files[0]; if(!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try{
+      data = deepMerge(structuredClone(DEFAULT_DATA), JSON.parse(reader.result));
+      saveSiteData(data);
+      loadForm();
+      toast("✅ 復元しました");
+    }catch(e){ alert("ファイルを読み込めませんでした"); }
+    input.value = "";
+  };
+  reader.readAsText(file);
+}
+function resetAll(){
+  if(!confirm("すべての編集内容を消して、初期状態に戻します。よろしいですか？")) return;
+  resetSiteData();
+  data = loadSiteData();
+  loadForm();
+  toast("初期状態に戻しました");
+}
+
+/* ============ 書類・情報公開 ============ */
+const DOC_MAX_SIZE = 3 * 1024 * 1024; // 3MB
+function fmtDocSize(b){ return b > 1048576 ? (b/1048576).toFixed(1)+"MB" : Math.max(1,Math.round(b/1024))+"KB"; }
+function renderDocs(){
+  data.documents ??= [];
+  document.getElementById("docsBody").innerHTML = data.documents.map((d,i)=>`
+    <div class="news-item">
+      <div class="news-head">
+        <input type="date" value="${d.date||""}" onchange="data.documents[${i}].date=this.value">
+        <input type="text" value="${(d.title||"").replace(/"/g,'&quot;')}" placeholder="書類名（例：重要事項説明書）" onchange="data.documents[${i}].title=this.value">
+        <button class="btn btn-danger" onclick="if(confirm('この書類を削除しますか？')){data.documents.splice(${i},1);renderDocs();}">削除</button>
+      </div>
+      <input type="text" style="margin-top:10px" value="${(d.desc||"").replace(/"/g,'&quot;')}" placeholder="説明（任意）" onchange="data.documents[${i}].desc=this.value">
+      <div style="display:flex;align-items:center;gap:12px;margin-top:10px;flex-wrap:wrap">
+        <span style="font-size:13px">${d.filename ? `📎 ${d.filename}（${fmtDocSize(d.size||0)}）` : "ファイル未設定"}</span>
+        <button class="btn btn-small" onclick="pickDocFile(${i})">📎 ファイルを選ぶ</button>
+      </div>
+    </div>`).join("") || `<p style="font-size:13px;color:#9a8f83;margin-top:10px">まだ書類がありません。「＋ 書類を追加」から追加してください。</p>`;
+}
+function addDocument(){
+  data.documents ??= [];
+  const t = new Date();
+  const dstr = `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,"0")}-${String(t.getDate()).padStart(2,"0")}`;
+  data.documents.push({title:"", desc:"", date:dstr, filename:"", mime:"", size:0, data:""});
+  renderDocs();
+}
+function pickDocFile(i){
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = ".pdf,.doc,.docx,.xls,.xlsx,image/*";
+  input.onchange = () => {
+    const file = input.files[0]; if(!file) return;
+    if(file.size > DOC_MAX_SIZE){
+      alert(`ファイルが大きすぎます（${fmtDocSize(file.size)}）。3MB以下にしてください。\nPDFの場合は「PDFを圧縮」などの無料ツールでサイズを小さくできます。`);
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const d = data.documents[i];
+      d.filename = file.name;
+      d.mime = file.type || "application/octet-stream";
+      d.size = file.size;
+      d.data = reader.result;
+      if(!d.title) d.title = file.name.replace(/\.[^.]+$/,"");
+      renderDocs();
+      toast("ファイルを設定しました（保存を忘れずに）");
+    };
+    reader.readAsDataURL(file);
+  };
+  input.click();
+}
+
+/* ============ エラーログ ============ */
+function esc(s){ return String(s??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function renderErrlog(){
+  const log = loadErrorLog().slice().reverse(); // 新しい順
+  document.getElementById("errCount").textContent = log.length ? `（${log.length}件）` : "";
+  document.getElementById("errlogBody").innerHTML = log.length
+    ? log.map(e=>{
+        const d = new Date(e.time);
+        const when = `${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")}`;
+        return `<div style="border:1px solid var(--beige-dark);border-radius:8px;padding:10px 14px;margin-bottom:8px;background:#fffdf9;font-size:12.5px">
+          <div style="display:flex;gap:10px;flex-wrap:wrap;color:#9a8f83">
+            <span>🕐 ${when}</span><span>📄 ${esc(e.page)}</span>
+            <span style="color:var(--danger);font-weight:700">${esc(e.type)}</span>
+            ${e.count>1 ? `<span style="font-weight:700">×${e.count}回</span>` : ""}
+          </div>
+          <div style="margin-top:4px;font-weight:500">${esc(e.message)}</div>
+          ${e.source ? `<div style="margin-top:2px;color:#9a8f83;word-break:break-all">${esc(e.source)}</div>` : ""}
+        </div>`;
+      }).join("")
+    : `<div style="padding:16px;background:#eef4ea;border-radius:8px;font-size:13.5px">✅ エラーは記録されていません</div>`;
+}
+
+/* ============ toast ============ */
+let toastTimer;
+function toast(msg){
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.classList.remove("show"), 2600);
+}
+
+loadForm();
+</script>
+</body>
+</html>

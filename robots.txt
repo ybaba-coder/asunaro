@@ -1,0 +1,8 @@
+# デイサービスあすなろ諫早
+User-agent: *
+Allow: /
+# 管理画面は検索結果に出さない
+Disallow: /admin.html
+
+# 公開時：本番ドメインに置き換えてください
+Sitemap: https://www.warms-isahaya.com/sitemap.xml
