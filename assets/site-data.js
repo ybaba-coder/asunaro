@@ -25,7 +25,7 @@ const DEFAULT_DATA = {
     sougei: "送迎あります（諫早市全域）"
   },
   sns: {
-    instagram: "https://www.instagram.com/warmth.2019?igsh=MWdxaWFsMTdhMGdyNQ==",
+    instagram: "https://www.instagram.com/dayasunaro.isahaya",
     facebook: ""   // 空欄の間はアイコンに「準備中」と表示されます
   },
   hero: {
