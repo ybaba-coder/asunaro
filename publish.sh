@@ -11,6 +11,8 @@ rm -rf .publish-tmp
 mkdir -p .publish-tmp/assets
 cp index.html .publish-tmp/
 cp assets/*.js .publish-tmp/assets/
+cp assets/*.png .publish-tmp/assets/
+cp favicon.ico .publish-tmp/
 [ -f CNAME ] && cp CNAME .publish-tmp/
 
 cd .publish-tmp
