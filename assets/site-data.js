@@ -18,7 +18,7 @@ const DEFAULT_DATA = {
     zip: "854-0055",
     address: "長崎県諫早市栗面町176番地2　KIZUNAビル",
     email: "d.asunaro@warms-isahaya.com",
-    hours: "月曜日～土曜日、祝日（9：30～16：30）",
+    hours: "月曜日～土曜日、祝日（9：30～15：30）",
     capacity: "18名（地域密着型・少人数制）",
     target: "諫早市にお住まいの65歳以上の要支援、または要介護の認定を受けている方",
     meal: "食事代（500円）おやつ代込み",
@@ -85,7 +85,7 @@ const DEFAULT_DATA = {
     { time: "午前", title: "体調確認・体操・入浴など", desc: "体調を確認し朝の体操からはじまり、入浴など行います" },
     { time: "12:00", title: "昼食", desc: "あすなろ諫早にて昼食をとります" },
     { time: "午後", title: "機能訓練", desc: "個別・集団で機能訓練等を行います" },
-    { time: "16:30", title: "自宅までお送り", desc: "ご帰宅" }
+    { time: "15:30", title: "自宅までお送り", desc: "ご帰宅" }
   ],
   philosophy: {
     heading: "基本理念",
