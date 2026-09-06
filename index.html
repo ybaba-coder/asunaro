@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>デイサービスあすなろ諫早 – 諫早市のデイサービス　記憶に残る人生を、共に</title>
+<meta name="description" content="長崎県諫早市の地域密着型デイサービスあすなろ諫早（株式会社ワームス）。定員18名の少人数制で、ドライブ・お花見など外出レクリエーションが充実。生活リハビリ・アロマセラピー・入浴介助・諫早市全域送迎対応。見学・体験利用受付中。TEL 0957-47-9850">
+<meta name="robots" content="index,follow">
+
+<!-- ファビコン（ブラウザのタブ・Google検索結果に表示されるアイコン） -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#5e8c5a">
+
+<!-- ▼ 公開時：本番のドメインに置き換えてください（canonical と og:url の2箇所） -->
+<link rel="canonical" href="https://ybaba-coder.github.io/asunaro/">
+
+<!-- OGP（LINE・Facebook・X などでシェアされた時の表示） -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="デイサービスあすなろ諫早">
+<meta property="og:title" content="デイサービスあすなろ諫早｜諫早市のデイサービス">
+<meta property="og:description" content="「記憶に残る人生を、共に」。定員18名の地域密着型・少人数デイサービス。外出レク充実、諫早市全域送迎。見学・体験利用受付中。">
+<meta property="og:url" content="https://ybaba-coder.github.io/asunaro/">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=1200&q=80&auto=format&fit=crop">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- 構造化データ（Google検索に施設情報を正しく伝える） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "デイサービスあすなろ諫早",
+  "alternateName": "Day service Asunaro Isahaya",
+  "description": "長崎県諫早市の地域密着型通所介護（定員18名の少人数制デイサービス）。外出レクリエーションが充実。生活リハビリ・アロマセラピー・マッサージ・入浴介助・送迎サービスを提供。諫早市在住の65歳以上の要支援・要介護認定者が対象。",
+  "slogan": "記憶に残る人生を、共に",
+  "url": "https://ybaba-coder.github.io/asunaro/",
+  "telephone": "+81-957-47-9850",
+  "faxNumber": "+81-957-47-9860",
+  "email": "d.asunaro@warms-isahaya.com",
+  "address": {
+    "@type": "PostalAddress",
+    "postalCode": "854-0055",
+    "addressRegion": "長崎県",
+    "addressLocality": "諫早市",
+    "streetAddress": "栗面町176番地2 KIZUNAビル",
+    "addressCountry": "JP"
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+    "opens": "09:30",
+    "closes": "15:30"
+  }],
+  "parentOrganization": {
+    "@type": "Organization",
+    "name": "株式会社ワームス"
+  },
+  "logo": "https://ybaba-coder.github.io/asunaro/assets/favicon-512.png",
+  "image": "https://ybaba-coder.github.io/asunaro/assets/favicon-512.png",
+  "sameAs": [
+    "https://www.instagram.com/dayasunaro.isahaya"
+  ],
+  "areaServed": "長崎県諫早市",
+  "priceRange": "食事代500円（おやつ代込み）"
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#5e8c5a;
+  --green-dark:#43683f;
+  --brown:#4a4038;
+  --beige:#f6f2ea;
+  --beige-dark:#ece5d8;
+  --white:#ffffff;
+  --accent:#d98e32;
+  --serif:"Noto Serif JP",serif;
+  --sans:"Noto Sans JP",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{font-family:var(--sans);color:var(--brown);background:var(--beige);line-height:1.9;letter-spacing:.04em}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ===== header ===== */
+.header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.96);box-shadow:0 1px 8px rgba(0,0,0,.08)}
+.header-top{display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto;padding:14px 20px 10px}
+.logo{line-height:1.3}
+.logo .logo-small{font-size:12px;color:var(--green-dark)}
+.logo .logo-main{font-family:var(--serif);font-size:24px;font-weight:700;color:var(--brown)}
+.logo .logo-en{font-family:"Dancing Script",cursive;font-size:14px;color:var(--accent)}
+.header-contact{text-align:right}
+.header-contact .tel{font-size:22px;font-weight:700;color:var(--brown);letter-spacing:.06em}
+.header-contact .tel::before{content:"📞 ";font-size:15px}
+.header-contact .company{font-size:12px;color:#8a7f74}
+.nav{border-top:1px solid #eee;background:#fff}
+.nav ul{display:flex;justify-content:center;flex-wrap:wrap;max-width:1100px;margin:0 auto;list-style:none}
+.nav a{display:block;padding:11px 26px;font-size:14.5px;font-weight:500;position:relative}
+.nav a:hover{color:var(--green)}
+.nav a::after{content:"";position:absolute;left:26px;right:26px;bottom:6px;height:2px;background:var(--green);transform:scaleX(0);transition:.25s}
+.nav a:hover::after{transform:scaleX(1)}
+.nav-toggle{display:none}
+
+/* ===== hero ===== */
+.hero{position:relative;min-height:78vh;display:flex;align-items:center;justify-content:center;text-align:center;margin-top:104px;background:linear-gradient(160deg,#aacdea 0%,#dcecf7 55%,#f2f7e8 100%);overflow:hidden}
+.hero-photo{position:absolute;top:-45%;left:0;right:0;width:100%;height:145%;object-fit:cover;will-change:transform}
+.hero::after{content:"";position:absolute;inset:0;background:rgba(30,50,60,.28)}
+.hero-inner{position:relative;z-index:2;color:#fff;padding:40px 20px;text-shadow:0 2px 14px rgba(0,0,0,.45)}
+.hero-inner h1{font-family:var(--serif);font-size:clamp(17px,2.4vw,25px);font-weight:600;letter-spacing:.24em}
+.hero-inner p{font-family:var(--serif);font-size:clamp(30px,5.8vw,60px);font-weight:700;margin-top:22px;letter-spacing:.1em;line-height:1.5}
+.hero-scroll{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:2;color:#fff;font-size:11px;letter-spacing:.3em;animation:float 2s ease-in-out infinite}
+.hero-sns{position:absolute;top:24px;right:24px;z-index:3;display:flex;gap:14px;align-items:flex-start}
+.hero-sns .sns-item{display:flex;flex-direction:column;align-items:center;gap:5px}
+.hero-sns .sns-btn{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.94);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.3);transition:.2s}
+.hero-sns a.sns-btn:hover{transform:translateY(-3px) scale(1.06)}
+.hero-sns svg{width:23px;height:23px}
+.hero-sns .sns-soon .sns-btn{background:rgba(255,255,255,.62);cursor:default}
+.hero-sns .sns-soon svg{opacity:.5}
+.hero-sns .sns-label{background:rgba(74,64,56,.78);color:#fff;font-size:10px;font-weight:700;letter-spacing:.08em;border-radius:999px;padding:2px 9px;white-space:nowrap;text-shadow:none}
+@media(max-width:820px){.hero-sns{top:14px;right:14px;gap:10px}.hero-sns .sns-btn{width:40px;height:40px}.hero-sns svg{width:20px;height:20px}.hero-sns .sns-label{font-size:9px;padding:2px 7px}}
+@keyframes float{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+/* ===== common ===== */
+.section{padding:80px 20px}
+.section-inner{max-width:1000px;margin:0 auto}
+.sec-title{text-align:center;margin-bottom:46px}
+.sec-title .en{font-family:"Dancing Script",cursive;font-size:22px;color:var(--accent);display:block}
+.sec-title h2{font-family:var(--serif);font-size:clamp(24px,3.4vw,34px);font-weight:700;letter-spacing:.14em;color:var(--brown)}
+.sec-title h2::after{content:"";display:block;width:52px;height:3px;background:var(--green);margin:14px auto 0;border-radius:2px}
+.photo-frame{border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(80,60,30,.16);background:linear-gradient(140deg,#cfe3c8,#eef3e2)}
+.photo-frame img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
+
+/* ===== intro ===== */
+.intro{background:var(--white)}
+.intro-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:50px;align-items:center}
+.intro h2{font-family:var(--serif);font-size:clamp(21px,2.8vw,29px);font-weight:700;line-height:1.7;letter-spacing:.08em;margin-bottom:24px;color:var(--green-dark)}
+.intro p{font-size:15.5px}
+.btn{display:inline-block;margin-top:28px;padding:14px 46px;background:var(--green);color:#fff;border-radius:999px;font-weight:700;letter-spacing:.1em;box-shadow:0 6px 16px rgba(94,140,90,.35);transition:.25s}
+.btn:hover{background:var(--green-dark);transform:translateY(-2px)}
+
+/* ===== services ===== */
+.service-card{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:center;margin-bottom:70px}
+.service-card:last-child{margin-bottom:0}
+.service-card:nth-child(even) .photo-frame{order:2}
+.service-card h3{font-family:var(--serif);font-size:25px;font-weight:700;letter-spacing:.1em;color:var(--brown);margin-bottom:4px}
+.service-card .en{font-family:"Dancing Script",cursive;font-size:19px;color:var(--accent);display:block;margin-bottom:16px}
+.service-card p{font-size:15px}
+.event-list{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px;list-style:none}
+.event-list li{background:var(--beige-dark);border-radius:999px;padding:5px 16px;font-size:13px}
+
+/* ===== bath / transport ===== */
+.bt{background:var(--white)}
+.bt-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.bt-card{background:var(--beige);border-radius:16px;overflow:hidden;box-shadow:0 8px 24px rgba(80,60,30,.1)}
+.bt-card img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.bt-card .bt-body{padding:26px 28px 32px}
+.bt-card h3{font-family:var(--serif);font-size:23px;font-weight:700;letter-spacing:.3em;color:var(--green-dark);margin-bottom:12px;text-align:center}
+.bt-card p{font-size:14.5px}
+
+/* ===== schedule ===== */
+.timeline{max-width:640px;margin:0 auto;position:relative;padding-left:30px}
+.timeline::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:3px;background:var(--green);border-radius:2px;opacity:.4}
+.tl-item{position:relative;padding:0 0 38px 26px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:"";position:absolute;left:-27px;top:8px;width:15px;height:15px;border-radius:50%;background:var(--green);border:3px solid #fff;box-shadow:0 0 0 2px var(--green)}
+.tl-item .time{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--green-dark)}
+.tl-item .tl-title{font-weight:700;font-size:17px}
+.tl-item .tl-desc{font-size:14px;color:#7d7369}
+
+/* ===== about ===== */
+.about{background:var(--white)}
+.philosophy{background:var(--beige);border-radius:16px;padding:40px 44px;margin-bottom:50px}
+.philosophy h3{font-family:var(--serif);font-size:23px;letter-spacing:.2em;color:var(--green-dark);text-align:center;margin-bottom:18px}
+.philosophy .lead{text-align:center;font-weight:700;margin-bottom:22px}
+.philosophy ol{list-style:none;counter-reset:ph;max-width:640px;margin:0 auto}
+.philosophy ol li{counter-increment:ph;position:relative;padding:8px 0 8px 44px;font-size:15px}
+.philosophy ol li::before{content:counter(ph);position:absolute;left:0;top:8px;width:30px;height:30px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+.info-table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 6px 20px rgba(80,60,30,.08)}
+.info-table th,.info-table td{padding:18px 24px;border-bottom:1px solid var(--beige-dark);font-size:15px;text-align:left;vertical-align:top}
+.info-table th{width:190px;background:var(--beige);font-family:var(--serif);letter-spacing:.12em;color:var(--green-dark);white-space:nowrap}
+.info-table tr:last-child th,.info-table tr:last-child td{border-bottom:none}
+
+/* ===== partners ===== */
+.partner-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px;max-width:760px;margin:0 auto}
+.partner-card{background:#fff;border-radius:16px;padding:30px 28px;box-shadow:0 6px 20px rgba(80,60,30,.1);text-align:center;display:flex;flex-direction:column;align-items:center;transition:.25s}
+.partner-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(80,60,30,.16)}
+.partner-logo{width:120px;height:120px;object-fit:contain;margin-bottom:18px;border-radius:12px}
+.partner-logo-ph{width:120px;height:120px;border-radius:12px;background:linear-gradient(140deg,var(--beige),var(--beige-dark));display:flex;align-items:center;justify-content:center;font-size:44px;margin-bottom:18px}
+.partner-card h3{font-family:var(--serif);font-size:18px;font-weight:700;letter-spacing:.06em;margin-bottom:10px;color:var(--brown)}
+.partner-tag{display:inline-block;background:var(--accent);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;border-radius:999px;padding:3px 14px;margin-bottom:10px}
+.partner-card p{font-size:13.5px;color:#6d6359;flex:1}
+.partner-card .partner-link{display:inline-block;margin-top:16px;padding:8px 26px;border:1.5px solid var(--green);color:var(--green-dark);border-radius:999px;font-size:13px;font-weight:700;transition:.2s}
+.partner-card .partner-link:hover{background:var(--green);color:#fff}
+
+/* ===== greeting ===== */
+.greeting-box{max-width:760px;margin:0 auto;background:var(--white);border-radius:16px;padding:44px 48px;box-shadow:0 8px 24px rgba(80,60,30,.1)}
+.greeting-box p{font-size:15px;margin-bottom:1em}
+.greeting-sign{text-align:right;font-family:var(--serif);font-size:16px;margin-top:26px;line-height:2}
+.greeting-photo{width:150px;height:150px;border-radius:50%;object-fit:cover;margin:0 auto 26px;display:block;box-shadow:0 6px 18px rgba(0,0,0,.15)}
+
+/* ===== visit ===== */
+.visit{background:linear-gradient(135deg,var(--green) 0%,var(--green-dark) 100%);color:#fff;text-align:center}
+.visit h2{font-family:var(--serif);font-size:clamp(23px,3vw,32px);letter-spacing:.14em;margin-bottom:16px}
+.visit p{max-width:600px;margin:0 auto 8px;font-size:15px}
+.visit .tel-big{font-size:clamp(28px,5vw,44px);font-weight:700;font-family:var(--serif);letter-spacing:.06em;margin:18px 0 4px;display:block;color:#fff}
+.visit .tel-big::before{content:"📞 ";font-size:.7em}
+.visit .hours-note{font-size:13px;opacity:.9}
+
+/* ===== news ===== */
+.news-list{max-width:760px;margin:0 auto;list-style:none}
+.news-list li{background:#fff;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 14px rgba(80,60,30,.07);overflow:hidden}
+.news-list summary{display:flex;gap:18px;align-items:center;padding:14px 24px;cursor:pointer;list-style:none}
+.news-list .news-thumb{width:60px;height:44px;object-fit:cover;border-radius:8px;flex-shrink:0;box-shadow:0 2px 8px rgba(80,60,30,.18)}
+.news-list summary::-webkit-details-marker{display:none}
+.news-list .news-date{font-size:13px;color:var(--accent);font-weight:700;white-space:nowrap}
+.news-list .news-title{font-size:15px;font-weight:500}
+.news-list .news-body{padding:0 24px 20px 24px;font-size:14px;color:#6d6359;border-top:1px dashed var(--beige-dark);padding-top:14px;margin:0 24px 20px;padding-left:0;padding-right:0}
+.news-list .news-photo{max-width:420px;width:100%;border-radius:10px;margin-top:12px;box-shadow:0 4px 14px rgba(80,60,30,.15)}
+.news-list .news-link{display:inline-block;margin-top:12px;padding:7px 22px;border:1.5px solid var(--green);color:var(--green-dark);border-radius:999px;font-size:13px;font-weight:700;transition:.2s}
+.news-list .news-link:hover{background:var(--green);color:#fff}
+.news-list .news-body a.auto-link{color:var(--green-dark);text-decoration:underline;word-break:break-all}
+
+/* ===== documents ===== */
+.doc-list{max-width:760px;margin:0 auto;list-style:none}
+.doc-list li{background:#fff;border-radius:12px;margin-bottom:12px;box-shadow:0 4px 14px rgba(80,60,30,.07);padding:16px 22px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.doc-icon{font-size:30px;flex-shrink:0}
+.doc-info{flex:1;min-width:200px}
+.doc-info .doc-title{font-weight:700;font-size:15px}
+.doc-info .doc-meta{font-size:12px;color:#9a8f83}
+.doc-info .doc-desc{font-size:13px;color:#6d6359;margin-top:2px}
+.doc-btn{padding:9px 24px;background:var(--green);color:#fff;border-radius:999px;font-size:13px;font-weight:700;border:none;cursor:pointer;font-family:inherit;transition:.2s;flex-shrink:0}
+.doc-btn:hover{background:var(--green-dark)}
+
+/* ===== access / footer ===== */
+.access-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.access-info p{font-size:15px;margin-bottom:8px}
+.access-info .name{font-family:var(--serif);font-size:20px;font-weight:700;margin-bottom:14px;color:var(--green-dark)}
+.map-frame{border-radius:14px;overflow:hidden;box-shadow:0 8px 24px rgba(80,60,30,.12);min-height:320px}
+.map-frame iframe{width:100%;height:100%;min-height:320px;border:0;display:block}
+.footer{background:var(--brown);color:#e8e0d5;text-align:center;padding:40px 20px 30px}
+.footer .f-name{font-family:var(--serif);font-size:19px;letter-spacing:.1em;margin-bottom:6px}
+.footer .f-info{font-size:13px;opacity:.85;line-height:1.9}
+.footer .copyright{margin-top:20px;font-size:11px;opacity:.6}
+.footer a.admin-link{opacity:.4;font-size:11px}
+.footer a.admin-link:hover{opacity:.9}
+
+/* ===== fadein ===== */
+.fade{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.fade.show{opacity:1;transform:none}
+
+/* ===== responsive ===== */
+@media(max-width:820px){
+  html{scroll-padding-top:80px}
+  .header-top{padding:10px 14px 8px}
+  .logo .logo-main{font-size:19px}
+  .header-contact .tel{font-size:17px}
+  .nav a{padding:9px 13px;font-size:13px}
+  .hero{margin-top:96px;min-height:64vh}
+  .section{padding:56px 16px}
+  .intro-grid,.service-card,.bt-grid,.access-grid{grid-template-columns:1fr;gap:26px}
+  .service-card:nth-child(even) .photo-frame{order:0}
+  .philosophy{padding:28px 22px}
+  .greeting-box{padding:30px 24px}
+  .info-table th{width:110px;padding:14px 12px;font-size:13px}
+  .info-table td{padding:14px 14px;font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-top">
+    <div class="logo">
+      <span class="logo-small">諫早市の地域密着型デイサービス</span><br>
+      <span class="logo-main" data-bind="site.name">デイサービスあすなろ諫早</span><br>
+      <span class="logo-en" data-bind="site.nameEn">Day service Asunaro Isahaya</span>
+    </div>
+    <div class="header-contact">
+      <a class="tel tel-link" data-bind="site.tel">0957-47-9850</a><br>
+      <span class="company" data-bind="site.company">株式会社ワームス</span>
+    </div>
+  </div>
+  <nav class="nav">
+    <ul>
+      <li><a href="#home">HOME</a></li>
+      <li><a href="#service">サービス</a></li>
+      <li><a href="#bath">送迎・入浴</a></li>
+      <li><a href="#about">事業所案内</a></li>
+      <li><a href="#visit">見学・体験</a></li>
+      <li><a href="#news">お知らせ</a></li>
+      <li><a href="#docs" id="navDocs" style="display:none">情報公開</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero" id="home">
+  <img class="hero-photo" id="heroPhoto" alt="" onerror="this.style.display='none'">
+  <div class="hero-inner">
+    <h1 data-bind="hero.title">デイサービスあすなろ諫早</h1>
+    <p data-bind="hero.sub">記憶に残る人生を、共に</p>
+  </div>
+  <div class="hero-sns" id="heroSns"></div>
+  <div class="hero-scroll">SCROLL ▼</div>
+</section>
+
+<!-- 紹介 -->
+<section class="section intro">
+  <div class="section-inner intro-grid">
+    <div class="fade">
+      <h2 data-bind-br="intro.heading"></h2>
+      <p data-bind-br="intro.body"></p>
+      <a class="btn" href="#visit">お問い合わせ</a>
+    </div>
+    <div class="photo-frame fade">
+      <img id="introPhoto" alt="施設周辺の風景" loading="lazy" onerror="this.style.display='none'">
+    </div>
+  </div>
+</section>
+
+<!-- サービス -->
+<section class="section" id="service">
+  <div class="section-inner">
+    <div class="sec-title fade">
+      <span class="en">Service</span>
+      <h2>サービス</h2>
+    </div>
+    <div id="serviceCards"></div>
+  </div>
+</section>
+
+<!-- 入浴・送迎 -->
+<section class="section bt" id="bath">
+  <div class="section-inner">
+    <div class="sec-title fade">
+      <span class="en">Bath &amp; Transport</span>
+      <h2>入浴・送迎</h2>
+    </div>
+    <div class="bt-grid">
+      <div class="bt-card fade">
+        <img id="bathPhoto" alt="入浴設備" loading="lazy" onerror="this.style.display='none'">
+        <div class="bt-body">
+          <h3 data-bind="bath.title">入　浴</h3>
+          <p data-bind-br="bath.body"></p>
+        </div>
+      </div>
+      <div class="bt-card fade">
+        <img id="transportPhoto" alt="送迎車両" loading="lazy" onerror="this.style.display='none'">
+        <div class="bt-body">
+          <h3 data-bind="transport.title">送　迎</h3>
+          <p data-bind-br="transport.body"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 一日の流れ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="sec-title fade">
+      <span class="en">Daily schedule</span>
+      <h2>一日の流れ</h2>
+    </div>
+    <div class="timeline fade" id="timeline"></div>
+  </div>
+</section>
+
+<!-- 事業所案内 -->
+<section class="section about" id="about">
+  <div class="section-inner">
+    <div class="sec-title fade">
+      <span class="en">About us</span>
+      <h2>事業所案内</h2>
+    </div>
+    <div class="philosophy fade">
+      <h3 data-bind="philosophy.heading">基本理念</h3>
+      <p class="lead" data-bind-br="philosophy.lead"></p>
+      <ol id="philosophyList"></ol>
+    </div>
+    <table class="info-table fade">
+      <tr><th>施設名</th><td data-bind="site.name"></td></tr>
+      <tr><th>運営法人</th><td data-bind="site.company"></td></tr>
+      <tr><th>サービス種別</th><td>地域密着型通所介護（定員18名以下の少人数制デイサービス）</td></tr>
+      <tr><th>利用対象</th><td data-bind="site.target"></td></tr>
+      <tr><th>定　員</th><td data-bind="site.capacity"></td></tr>
+      <tr><th>送　迎</th><td data-bind="site.sougei"></td></tr>
+      <tr><th>利用時間・料金</th><td><span data-bind="site.hours"></span><br><span data-bind="site.meal"></span></td></tr>
+      <tr><th>所在地</th><td>〒<span data-bind="site.zip"></span>　<span data-bind="site.address"></span></td></tr>
+      <tr><th>TEL / FAX</th><td>TEL <span data-bind="site.tel"></span>　FAX <span data-bind="site.fax"></span></td></tr>
+      <tr><th>メール</th><td data-bind="site.email"></td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 関連企業 -->
+<section class="section" id="partners">
+  <div class="section-inner">
+    <div class="sec-title fade">
+      <span class="en">Group</span>
+      <h2>関連企業</h2>
+    </div>
+    <div class="partner-grid fade" id="partnerGrid"></div>
+  </div>
+</section>
+
+<!-- 代表挨拶 -->
+<section class="section">
+  <div class="section-inner">
+    <div class="sec-title fade">
+      <span class="en">Greeting</span>
+      <h2 data-bind="greeting.heading">代表挨拶</h2>
+    </div>
+    <div class="greeting-box fade">
+      <img class="greeting-photo" id="greetingPhoto" alt="代表" style="display:none">
+      <div data-bind-paras="greeting.body"></div>
+      <div class="greeting-sign">
+        <span data-bind="greeting.sign1"></span><br>
+        <span data-bind="greeting.sign2"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 見学・体験 -->
+<section class="section visit" id="visit">
+  <div class="section-inner fade">
+    <h2>見学・体験利用受付中</h2>
+    <p>施設の雰囲気を、ぜひ一度ご覧ください。<br>見学やご相談は随時受け付けております。お気軽にお問い合わせください。</p>
+    <a class="tel-big" id="telLink" href="tel:0957-47-9850" data-bind="site.tel">0957-47-9850</a>
+    <p class="hours-note" data-bind="site.hours"></p>
+    <p class="hours-note" style="margin-top:10px">FAX <span data-bind="site.fax"></span>　／　✉ <a id="mailLink" style="text-decoration:underline" data-bind="site.email"></a></p>
+  </div>
+</section>
+
+<!-- お知らせ -->
+<section class="section" id="news">
+  <div class="section-inner">
+    <div class="sec-title fade">
+      <span class="en">News</span>
+      <h2>お知らせ</h2>
+    </div>
+    <ul class="news-list fade" id="newsList"></ul>
+  </div>
+</section>
+
+<!-- 情報公開（書類） -->
+<section class="section bt" id="docs" style="display:none">
+  <div class="section-inner">
+    <div class="sec-title fade">
+      <span class="en">Documents</span>
+      <h2>情報公開</h2>
+    </div>
+    <ul class="doc-list fade" id="docList"></ul>
+  </div>
+</section>
+
+<!-- アクセス -->
+<section class="section intro">
+  <div class="section-inner">
+    <div class="sec-title fade">
+      <span class="en">Access</span>
+      <h2>アクセス</h2>
+    </div>
+    <div class="access-grid fade">
+      <div class="access-info">
+        <p class="name" data-bind="site.name"></p>
+        <p>〒<span data-bind="site.zip"></span><br><span data-bind="site.address"></span></p>
+        <p>TEL <a class="tel-link" style="text-decoration:underline" data-bind="site.tel"></a><br>FAX <span data-bind="site.fax"></span></p>
+        <p data-bind="site.email"></p>
+      </div>
+      <div class="map-frame">
+        <iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="f-name" data-bind="site.name"></div>
+  <div class="f-info">
+    〒<span data-bind="site.zip"></span>　<span data-bind="site.address"></span><br>
+    TEL <a class="tel-link" style="text-decoration:underline" data-bind="site.tel"></a>　FAX <span data-bind="site.fax"></span><br>
+    運営：<span data-bind="site.company"></span>
+  </div>
+  <div class="copyright">Copyright © Asunaro Isahaya all rights reserved.　<a class="admin-link" href="admin.html">管理</a></div>
+</footer>
+
+<script src="assets/live-data.js?v=1"></script>
+<script src="assets/site-data.js?v=10"></script>
+<script>
+const data = loadSiteData();
+
+/* --- データバインド --- */
+function getPath(obj, path){ return path.split(".").reduce((o,k)=>o?.[k], obj); }
+document.querySelectorAll("[data-bind]").forEach(el=>{
+  const v = getPath(data, el.dataset.bind);
+  if(v !== undefined) el.textContent = v;
+});
+document.querySelectorAll("[data-bind-br]").forEach(el=>{
+  const v = getPath(data, el.dataset.bindBr);
+  if(v !== undefined) el.innerHTML = nl2br(v);
+});
+document.querySelectorAll("[data-bind-paras]").forEach(el=>{
+  const v = getPath(data, el.dataset.bindParas) || "";
+  el.innerHTML = v.split("\n").filter(s=>s.trim()).map(s=>`<p>${nl2br(s)}</p>`).join("");
+});
+
+/* --- 写真 --- */
+function setPhoto(id, src){
+  const el = document.getElementById(id);
+  if(el && src){ el.src = src; el.style.display = ""; }
+}
+setPhoto("heroPhoto", data.hero.photo);
+setPhoto("introPhoto", data.intro.photo);
+setPhoto("bathPhoto", data.bath.photo);
+setPhoto("transportPhoto", data.transport.photo);
+if(data.greeting.photo) setPhoto("greetingPhoto", data.greeting.photo);
+
+/* --- 電話・メールリンク --- */
+const telHref = "tel:" + data.site.tel.replace(/-/g,"");
+document.getElementById("telLink").href = telHref;
+document.querySelectorAll(".tel-link").forEach(a=>a.href = telHref);
+document.getElementById("mailLink").href = "mailto:" + data.site.email;
+
+/* --- サービスカード --- */
+document.getElementById("serviceCards").innerHTML = data.services.map(s=>`
+  <div class="service-card fade">
+    <div class="photo-frame"><img src="${s.photo||""}" alt="デイサービスあすなろ諫早の${s.title}" loading="lazy" onerror="this.style.display='none'"></div>
+    <div>
+      <h3>${s.title}</h3>
+      <span class="en">${s.en||""}</span>
+      <p>${nl2br(s.body)}</p>
+      ${s.list?.length ? `<ul class="event-list">${s.list.map(i=>`<li>${i}</li>`).join("")}</ul>` : ""}
+    </div>
+  </div>`).join("");
+
+/* --- 一日の流れ --- */
+document.getElementById("timeline").innerHTML = data.schedule.map(t=>`
+  <div class="tl-item">
+    <span class="time">${t.time}</span>
+    <div class="tl-title">${t.title}</div>
+    <div class="tl-desc">${t.desc||""}</div>
+  </div>`).join("");
+
+/* --- 関連企業 --- */
+const partners = (data.partners||[]).filter(p=>p.name);
+document.getElementById("partnerGrid").innerHTML = partners.map(p=>`
+  <div class="partner-card">
+    ${p.logo ? `<img class="partner-logo" src="${p.logo}" alt="${p.name}" loading="lazy" onerror="this.style.display='none'">`
+             : `<div class="partner-logo-ph">🏢</div>`}
+    ${p.tag ? `<span class="partner-tag">${p.tag}</span>` : ""}
+    <h3>${p.name}</h3>
+    <p>${nl2br(p.desc||"")}</p>
+    ${p.url ? `<a class="partner-link" href="${p.url}" target="_blank" rel="noopener">詳しくはこちら</a>` : ""}
+  </div>`).join("");
+if(!partners.length) document.getElementById("partners").style.display = "none";
+
+/* --- 基本理念 --- */
+document.getElementById("philosophyList").innerHTML =
+  data.philosophy.items.map(i=>`<li>${i}</li>`).join("");
+
+/* --- 本文中のURLをリンクに変換（エスケープ済みテキスト用） --- */
+function linkify(escaped){
+  return escaped.replace(/(https?:\/\/[^\s<]+)/g,
+    '<a class="auto-link" href="$1" target="_blank" rel="noopener">$1</a>');
+}
+
+/* --- お知らせ（新しい順） --- */
+const news = [...data.news].sort((a,b)=> (b.date||"").localeCompare(a.date||""));
+document.getElementById("newsList").innerHTML = news.length
+  ? news.map(n=>`
+    <li><details>
+      <summary><span class="news-date">${(n.date||"").replace(/-/g,".")}</span>${n.photo ? `<img class="news-thumb" src="${n.photo}" alt="" loading="lazy" onerror="this.style.display='none'">` : ""}<span class="news-title">${n.title}</span></summary>
+      ${(n.body || n.photo || n.url) ? `<div class="news-body">${linkify(nl2br(n.body||""))}${n.photo ? `<img class="news-photo" src="${n.photo}" alt="${n.title}" loading="lazy" onerror="this.style.display='none'">` : ""}${n.url ? `<br><a class="news-link" href="${n.url}" target="_blank" rel="noopener">詳しくはこちら →</a>` : ""}</div>` : ""}
+    </details></li>`).join("")
+  : `<li style="padding:20px 24px;background:#fff;border-radius:12px">お知らせはまだありません。</li>`;
+
+/* --- 情報公開（書類） --- */
+const docs = data.documents || [];
+if(docs.length){
+  document.getElementById("docs").style.display = "";
+  document.getElementById("navDocs").style.display = "";
+  const DOC_ICONS = {pdf:"📕", word:"📘", excel:"📗", image:"🖼", other:"📄"};
+  const docKind = m => m.includes("pdf") ? "pdf" : /word|officedocument\.wordprocessing/.test(m) ? "word"
+    : /excel|spreadsheet/.test(m) ? "excel" : m.startsWith("image/") ? "image" : "other";
+  const fmtSize = b => b > 1048576 ? (b/1048576).toFixed(1)+"MB" : Math.max(1,Math.round(b/1024))+"KB";
+  document.getElementById("docList").innerHTML = docs.map((d,i)=>`
+    <li>
+      <span class="doc-icon">${DOC_ICONS[docKind(d.mime||"")]}</span>
+      <div class="doc-info">
+        <div class="doc-title">${nl2br(d.title||d.filename||"書類")}</div>
+        ${d.desc ? `<div class="doc-desc">${nl2br(d.desc)}</div>` : ""}
+        <div class="doc-meta">${d.date ? d.date.replace(/-/g,".")+"　" : ""}${d.filename||""}${d.size ? "（"+fmtSize(d.size)+"）" : ""}</div>
+      </div>
+      <button class="doc-btn" onclick="openDoc(${i})">開く・ダウンロード</button>
+    </li>`).join("");
+}
+function openDoc(i){
+  const d = (data.documents||[])[i];
+  if(!d?.data) return;
+  // dataURL → Blob にして開く（PDFはブラウザ内で表示、その他はダウンロード）
+  const bin = atob(d.data.split(",")[1]);
+  const buf = new Uint8Array(bin.length);
+  for(let j=0;j<bin.length;j++) buf[j] = bin.charCodeAt(j);
+  const blob = new Blob([buf], {type: d.mime || "application/octet-stream"});
+  const url = URL.createObjectURL(blob);
+  if((d.mime||"").includes("pdf") || (d.mime||"").startsWith("image/")){
+    window.open(url, "_blank");
+  }else{
+    const a = document.createElement("a");
+    a.href = url; a.download = d.filename || "document";
+    a.click();
+  }
+  setTimeout(()=>URL.revokeObjectURL(url), 60000);
+}
+
+/* --- 地図（住所からGoogleマップ埋め込み） --- */
+document.getElementById("mapFrame").src =
+  "https://www.google.com/maps?q=" + encodeURIComponent(data.site.address) + "&output=embed";
+
+/* --- ヒーロー位置をヘッダーの実際の高さに合わせる --- */
+function fitHeroTop(){
+  document.getElementById("home").style.marginTop =
+    document.querySelector(".header").offsetHeight + "px";
+}
+fitHeroTop();
+window.addEventListener("resize", fitHeroTop);
+window.addEventListener("load", fitHeroTop);
+
+/* --- SNSアイコン（ヒーロー右上） --- */
+const SNS_ICONS = {
+  instagram: {
+    color: "#E4405F",
+    svg: `<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path fill="#E4405F" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>`
+  },
+  facebook: {
+    color: "#1877F2",
+    svg: `<svg viewBox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path fill="#1877F2" d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>`
+  }
+};
+const SNS_LABEL = {instagram:"Instagram", facebook:"Facebook"};
+document.getElementById("heroSns").innerHTML = ["instagram","facebook"].map(k => {
+  const url = data.sns?.[k];
+  // URLが設定されていればリンク、未設定なら「準備中」表示
+  return url
+    ? `<div class="sns-item"><a class="sns-btn" href="${url}" target="_blank" rel="noopener" aria-label="${SNS_LABEL[k]}">${SNS_ICONS[k].svg}</a></div>`
+    : `<div class="sns-item sns-soon"><span class="sns-btn" role="img" aria-label="${SNS_LABEL[k]}（準備中）">${SNS_ICONS[k].svg}</span><span class="sns-label">準備中</span></div>`;
+}).join("");
+
+/* --- ヒーロー写真のパララックス（スクロールで背景がゆっくり動く） --- */
+if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+  const heroPhoto = document.getElementById("heroPhoto");
+  const hero = document.getElementById("home");
+  let ticking = false;
+  window.addEventListener("scroll", () => {
+    if(ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const y = window.scrollY;
+      if(y < hero.offsetTop + hero.offsetHeight){
+        heroPhoto.style.transform = `translateY(${y * 0.4}px)`;
+      }
+      ticking = false;
+    });
+  }, {passive:true});
+}
+
+/* --- スクロールフェードイン --- */
+const io = new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("show"); io.unobserve(e.target);} });
+},{threshold:.12});
+document.querySelectorAll(".fade").forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
