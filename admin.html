@@ -84,6 +84,7 @@ textarea{min-height:100px;resize:vertical;line-height:1.7}
   <h1>🌲 あすなろ諫早　ホームページ管理画面</h1>
   <div class="actions">
     <button class="btn btn-ghost" onclick="window.open('index.html','_blank')">サイトを見る</button>
+    <button class="btn btn-ghost" onclick="syncFromPublished()">🔄 公開中の内容を取り込む</button>
     <button class="btn btn-save" onclick="saveAll()">保存する</button>
     <button class="btn btn-publish" onclick="exportLiveData()">🌐 公開用に書き出す</button>
   </div>
@@ -94,7 +95,9 @@ textarea{min-height:100px;resize:vertical;line-height:1.7}
     ✏️ 各項目を編集して、右上の<b>「保存する」</b>を押すとホームページに反映されます。<br>
     📷 写真は「写真を変更」からパソコン内の画像を選ぶだけで入れ替えられます（自動で縮小されます）。<br>
     🌐 <b>インターネットに反映したい時</b>は「保存する」の後に<b>「🌐 公開用に書き出す」</b>を押して、
-    ダウンロードされた <code>live-data.js</code> を担当者にお渡しください（またはそのままお知らせください）。
+    ダウンロードされた <code>live-data.js</code> を担当者にお渡しください（またはそのままお知らせください）。<br>
+    🔄 <b>編集を始める前</b>に<b>「🔄 公開中の内容を取り込む」</b>を押すと、公開サイトの最新状態から編集できます
+    （古い内容で上書きしてしまうのを防げます）。
   </div>
 
   <!-- 基本情報 -->
@@ -266,7 +269,7 @@ textarea{min-height:100px;resize:vertical;line-height:1.7}
 <div class="toast" id="toast">✅ 保存しました</div>
 
 <script src="assets/live-data.js?v=1"></script>
-<script src="assets/site-data.js?v=9"></script>
+<script src="assets/site-data.js?v=10"></script>
 <script>
 let data = loadSiteData();
 
@@ -448,6 +451,23 @@ function saveAll(){
     logSiteError({type:"保存エラー", message:"データの保存に失敗しました（容量不足の可能性）", source:String(e)});
     alert("保存に失敗しました。写真の枚数が多い場合は、使っていない写真を外してからもう一度お試しください。");
   }
+}
+
+/* ============ 公開中の内容を取り込む ============ */
+function syncFromPublished(){
+  if(!confirm("公開中の最新内容をこの画面に読み込みます。\n\nこの画面での編集内容は、念のためバックアップを保存してから置き換えます。\nよろしいですか？")) return;
+  // 念のため現在の内容をバックアップとして書き出す
+  try{
+    collectForm();
+    const blob = new Blob([JSON.stringify(data, null, 1)], {type:"application/json"});
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "asunaro-backup-" + new Date().toISOString().slice(0,10) + ".json";
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }catch(e){ /* バックアップ失敗でも同期は続行 */ }
+  resetSiteData();
+  location.reload();
 }
 
 /* ============ 公開用ファイルの書き出し ============ */
